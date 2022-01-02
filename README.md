@@ -135,6 +135,14 @@ will pop out a window that contain the simulation results:
 
 
 
+# VHDL
+* variable ':=' are assigned immediately
+* signals '<=' are assigned after the PROCESS goes to sleep
+* `--` comment 
+* signal takes delay to propagtes
+* variables are removed, turned into wires after optimization 
+
+
 
 
 

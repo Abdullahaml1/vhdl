@@ -1,0 +1,7 @@
+v 4
+file . "latch_1_bench.vhd" "b812839640dbbac9ad876927ac4610eeadbe792d" "20220102032523.560":
+  entity bit_latch_bn at 1( 0) + 0 on 53;
+  architecture test_bench of bit_latch_bn at 9( 114) + 0 on 54;
+file . "latch_1.vhd" "ac936a682f3691dc7d4792ac26da4ce5afc95772" "20220102032523.552":
+  entity latch at 5( 182) + 0 on 51;
+  architecture behav of latch at 10( 271) + 0 on 52;

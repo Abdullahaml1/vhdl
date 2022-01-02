@@ -1,0 +1,2 @@
+1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
+0 1 15 ns 1 0 Problem with No Change on a high level.
