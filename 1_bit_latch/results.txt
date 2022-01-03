@@ -1,0 +1,8 @@
+Time is now: 15 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 30 nsD=1, clk=1, Actual q=1, Actual nq=0FAILED, Error Messages:  Problem with capturing a 1 on a rising.    
+Time is now: 45 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 60 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 75 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 90 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 105 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED
+Time is now: 120 nsD=1, clk=1, Actual q=1, Actual nq=0Test PASSED

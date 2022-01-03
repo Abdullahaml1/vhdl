@@ -27,7 +27,7 @@ begin
     variable simulation_l, result_l : line;
     variable d_in_file, clk_in_file, q_out_file, nq_out_file: bit;
     variable pause: time;
-    variable message: string (1 TO 50);
+    variable message: string (1 TO 44);
 
     begin
 
@@ -45,7 +45,6 @@ begin
         read (simulation_l, pause);
         read (simulation_l, q_out_file);
         read (simulation_l, nq_out_file);
-        assert false report string'(" it is okey");
         read (simulation_l, message);
 
         -- Applying simulation inputs
@@ -85,7 +84,7 @@ begin
           writeline (results_file, result_l);
         end loop;
 
-        assert true report "End of Test";
+        assert false report "End of Test";
         wait;
       end process testing;
 
