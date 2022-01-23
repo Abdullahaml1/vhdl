@@ -1,0 +1,55 @@
+$date
+  Mon Jan 24 01:25:16 2022
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module textio $end
+$upscope $end
+$scope module bit_latch_bn $end
+$var reg 1 ! d $end
+$var reg 1 " clk $end
+$var reg 1 # q $end
+$var reg 1 $ nq $end
+$scope module dut $end
+$var reg 1 % d $end
+$var reg 1 & clk $end
+$var reg 1 ' q $end
+$var reg 1 ( nq $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+1!
+1"
+1#
+0$
+1%
+1&
+1'
+0(
+#15000000
+0"
+0&
+#30000000
+0!
+1"
+0#
+1$
+0%
+1&
+0'
+1(
+#45000000
+1!
+0"
+1%
+0&
+#60000000

@@ -35,6 +35,8 @@ begin
       d <= '1';
       clk <='0';
 
+      -- first title line
+      readline (vectors_file, simulation_l);
       -- test vectors file parsing
       while not endfile (vectors_file) loop
 
@@ -56,27 +58,27 @@ begin
         write (result_l, string'("Time is now: "));
         write (result_l, NOW);
 
-        write (result_l, string'("D="));
+        write (result_l, string'(", D="));
         write (result_l, d_in_file);
 
         write (result_l, string'(", clk="));
         write (result_l, clk_in_file);
 
         write (result_l, string'(", Actual q="));
-        write (result_l, q);
+        write (result_l, q_out_file);
 
         write (result_l, string'(", Actual nq="));
-        write (result_l, nq);
+        write (result_l, nq_out_file);
 
 
         -- checking for input validation
         if q /= q_out_file or nq /= nq_out_file then
 
-          write (result_l, string'("FAILED, Error Messages: "));
+          write (result_l, string'(" FAILED, Error Messages: "));
           write (result_l, message);
 
         else
-          write (result_l, string'("Test PASSED"));
+          write (result_l, string'(" Test PASSED"));
 
           end if;
 
@@ -85,7 +87,7 @@ begin
         end loop;
 
         assert false report "End of Test";
-        wait;
+        wait; -- kill the process
       end process testing;
 
 END ARCHITECTURE test_bench;

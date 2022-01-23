@@ -138,6 +138,18 @@ will pop out a window that contain the simulation results:
 # VHDL
 * variable ':=' are assigned immediately
 * signals '<=' are assigned after the PROCESS goes to sleep
+* Signals can not be assigned twice by two distincit modules (error short circuit)
+* initializing variables will NOT be in syntethis
+* `wait;` means kill the process after itis finished
+* IF ELSIF ELSE is synthehis as a on multiplexor
+
+## Signals 
+* Signals in VHDL have history indicated by `signal_name'history record type
+
+## Type and Operations
+* Integer, real, string, char are not synthesizable you need to add a library to synthesize them
+* Enumration are synthizable if the base is synthizable
+* VHDL have arryas and records (C Structure)
 * `--` comment 
 * signal takes delay to propagtes
 * variables are removed, turned into wires after optimization 

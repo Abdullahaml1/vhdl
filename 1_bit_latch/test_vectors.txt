@@ -1,8 +1,5 @@
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 1 Problem with capturing a 1 on a rising.     
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
-1 1 15 ns 1 0 Problem with capturing a 1 on a rising edge.
+D-Clk-delay-q-qbar                                        
+1 1 15 ns 1 0 problem reacting to change in D.               
+1 0 15 ns 1 0 The latch does not hold D                    
+0 1 15 ns 0 1 Deasserting D (do latch depend on clk?)     
+1 0 15 ns 0 1 output is not changing at the clock        
