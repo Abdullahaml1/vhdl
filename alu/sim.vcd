@@ -1,0 +1,30 @@
+$date
+  Tue Jan 25 00:42:29 2022
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module numeric_bit $end
+$upscope $end
+$scope module pack_a $end
+$upscope $end
+$scope module textio $end
+$upscope $end
+$scope module alu_test_bench $end
+$comment op is not handled $end
+$var reg 4 ! a[3:0] $end
+$var reg 4 " b[3:0] $end
+$var reg 4 # c[3:0] $end
+$scope module dut $end
+$comment op is not handled $end
+$var reg 4 $ a[3:0] $end
+$var reg 4 % b[3:0] $end
+$var reg 4 & c[3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end

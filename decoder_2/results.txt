@@ -1,0 +1,4 @@
+Time is now: 15 ns, address=7, decode=10, Actual decode=10 Test PASSED
+Time is now: 30 ns, address=15, decode=01, Actual decode=01 Test PASSED
+Time is now: 45 ns, address=17, decode=01, Actual decode=01 Test PASSED
+Time is now: 60 ns, address=20, decode=11, Actual decode=11 Test PASSED

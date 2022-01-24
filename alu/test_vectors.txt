@@ -1,0 +1,5 @@
+Address-delay-decode                                        
+7 15 ns 10 Corner case for first case.                           
+15 15 ns 01 Corner case for second case (changing both bits).              
+17 15 ns 01 does save the output(out side the range behaviour).           
+20 15 ns 11 problem reacting to change in D.                 
