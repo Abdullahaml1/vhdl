@@ -27,3 +27,6 @@ run:
 	ghdl -r $(MOD) --vcd=$(SIM)
 	@echo "build run successfully"
 
+sim: run
+	gtkwave $(SIM)
+
