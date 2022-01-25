@@ -1,0 +1,6 @@
+in-s-delay-z                                        
+0001 11 15 ns 1 Corner case for first case.                           
+0001 00 15 ns 0 Corner case for first case.                           
+1001 10 15 ns 1 Corner case for first case.                           
+1010 10 15 ns 1 Corner case for first case.                           
+0000 11 15 ns 0 Corner case for first case.                           
