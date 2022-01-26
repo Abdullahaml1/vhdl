@@ -43,10 +43,8 @@ begin
 
     variable rw_in_file, enable_in_file: bit;
     variable address_in_file:bit_vector(n-1 downto 0);
-    variable write_data_in_file: bit_vector (m-1 downto 0);
-    variable read_data_out_file: bit_vector (m-1 downto 0);
-
-    variable read_data: std_logic_vector (m-1 downto 0);
+    variable data_in_file: bit_vector (m-1 downto 0);
+    variable data_out_file: bit_vector (m-1 downto 0);
 
     -- function to covert std to string
     function to_bstring(sl : std_logic) return string is
@@ -86,12 +84,19 @@ begin
         read (simulation_l, rw_in_file);
         read (simulation_l, enable_in_file);
         read (simulation_l, address_in_file);
-        read (simulation_l, write_data_in_file);
+        read (simulation_l, data_in_file);
         read (simulation_l, pause);
-        read (simulation_l, read_data_out_file);
+        read (simulation_l, data_out_file);
         read (simulation_l, message);
 
         -- Applying simulation inputs
+
+        case rw_in_file is
+          when '0'  => rw <= '0';
+          when '1'  => rw <= '1';
+          when others => null;
+        end case;
+
 
         case enable_in_file is
           when '0'  => enable <= '0';
@@ -99,20 +104,11 @@ begin
           when others => null;
         end case;
 
-
         address <= unsigned(to_stdlogicvector(address_in_file));
-
-        if rw_in_file ='1' then
-          rw <= '1';
-          data <= to_stdlogicvector(write_data_in_file);
-
-        elsif rw_in_file ='0' then
-          rw <= '0';
-          read_data := data;
-
-        end if;
+        data <= to_stdlogicvector(data_in_file);
 
         wait for pause;
+
 
         -- writing output to results file
         write (result_l, string'("Time is now: "));
@@ -125,33 +121,30 @@ begin
         write (result_l, string'(", enable="));
         write (result_l, enable_in_file);
 
+
         write (result_l, string'(", address="));
         write (result_l, address_in_file);
 
-        write (result_l, string'(", write_data_in="));
-        write (result_l, write_data_in_file);
+        write (result_l, string'(", data_in="));
+        write (result_l, data_in_file);
 
-        write (result_l, string'(", read_data_out="));
-        write (result_l, read_data_out_file);
-
-        write (result_l, string'(", memory data="));
+        write (result_l, string'(", out data="));
         write (result_l, to_bstring(data));
 
+        write (result_l, string'(", Actual data="));
+        write (result_l, data_out_file);
 
 
         -- checking for input validation
-        if rw_in_file = '0' then -- if it read evaluate validation
-          if read_data /= to_stdlogicvector(read_data_out_file) then
+        if data /= to_stdlogicvector(data_out_file) then
 
-            write (result_l, string'(" FAILED, Error Messages: "));
-            write (result_l, message);
+          write (result_l, string'(" FAILED, Error Messages: "));
+          write (result_l, message);
 
-          else
-            write (result_l, string'(" Test PASSED"));
+        else
+          write (result_l, string'(" Test PASSED"));
 
-          end if;
         end if;
-
 
         -- writing into results file
         writeline (results_file, result_l);

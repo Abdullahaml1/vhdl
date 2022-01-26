@@ -1,3 +1,6 @@
 rw-enable-address-datain-dataout                                          
-0 1 0000 0000 15 ns 0000 all ones test.                                
-0 1 0000 1100 15 ns 0000 all ones test.                                
+1 1 0000 1100 15 ns 0000 all ones test.                                
+0 1 0000 1100 15 ns 1100 all ones test.                                
+1 1 1000 0101 15 ns 1100 all ones test.                                
+0 1 1000 0101 15 ns 0101 all ones test.                                
+0 1 0000 1100 15 ns 1100 all ones test.                                
