@@ -1,5 +1,6 @@
 Time is now: 15 ns, a,b,c,d=0001, s=11, z=1, Actual z=1 Test PASSED
 Time is now: 30 ns, a,b,c,d=0001, s=00, z=0, Actual z=0 Test PASSED
-Time is now: 45 ns, a,b,c,d=1001, s=10, z=0, Actual z=1 FAILED, Error Messages:  Corner case for first case.                
-Time is now: 60 ns, a,b,c,d=1010, s=10, z=1, Actual z=1 Test PASSED
-Time is now: 75 ns, a,b,c,d=0000, s=11, z=0, Actual z=1 FAILED, Error Messages:  Corner case for first case.                
+Time is now: 45 ns, a,b,c,d=1000, s=00, z=1, Actual z=1 Test PASSED
+Time is now: 60 ns, a,b,c,d=0010, s=10, z=1, Actual z=1 Test PASSED
+Time is now: 75 ns, a,b,c,d=1000, s=01, z=0, Actual z=0 Test PASSED
+Time is now: 90 ns, a,b,c,d=1100, s=01, z=1, Actual z=1 Test PASSED

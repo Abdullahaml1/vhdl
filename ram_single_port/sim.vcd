@@ -1,0 +1,46 @@
+$date
+  Wed Jan 26 02:22:52 2022
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module numeric_std $end
+$upscope $end
+$scope module textio $end
+$upscope $end
+$scope module ram_single_port_test_bench $end
+$var reg 1 ! rw $end
+$var reg 1 " enable $end
+$var reg 4 # address[3:0] $end
+$var reg 4 $ data[3:0] $end
+$scope module dut $end
+$var reg 1 % rw $end
+$var reg 1 & enable $end
+$var reg 4 ' address[3:0] $end
+$var reg 4 ( data[3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+1!
+1"
+b0000 #
+b0000 $
+1%
+1&
+b0000 '
+b0000 (
+#15000000
+0!
+0%
+#30000000
+bXX00 $
+bXX00 (
+#45000000

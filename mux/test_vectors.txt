@@ -1,6 +1,7 @@
 in-s-delay-z                                        
-0001 11 15 ns 1 Corner case for first case.                           
-0001 00 15 ns 0 Corner case for first case.                           
-1001 10 15 ns 1 Corner case for first case.                           
-1010 10 15 ns 1 Corner case for first case.                           
-0000 11 15 ns 0 Corner case for first case.                           
+0001 11 15 ns 1 Not selecting the last input.                      
+0001 00 15 ns 0 stuck at 1 output.                            
+1000 00 15 ns 1 not selecting first input.                          
+0010 10 15 ns 1 Not selecting third input.                          
+1000 01 15 ns 0 stuck at 1 fault.                            
+1100 01 15 ns 1 Not selecting second input.                            

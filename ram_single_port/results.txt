@@ -1,0 +1,2 @@
+Time is now: 30 ns, rw=0, enable=1, address=0000, data_in=0000, out data=, Actual data=0000 Test PASSED
+Time is now: 45 ns, rw=0, enable=1, address=0000, data_in=1100, out data=, Actual data=0000 FAILED, Error Messages:  all ones test.                             
