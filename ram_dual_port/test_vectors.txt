@@ -1,0 +1,5 @@
+r-w-address_in-address_out-data_in-delay-data_out
+1 1 0000 0000 0000 15 ns 0000 all ones test.                                
+1 1 0001 0000 1100 15 ns 0000 all ones test.                                
+0 1 0001 0001 1100 15 ns 1100 all ones test.                                
+1 1 1001 1001 1101 15 ns 1101 all ones test.                                

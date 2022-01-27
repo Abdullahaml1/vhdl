@@ -4,29 +4,33 @@ USE ieee.numeric_std.ALL;
 use std.textio.all;
 
 
-entity ram_single_port_test_bench is
+entity ram_dual_port_test_bench is
 end entity;
 
 
-architecture test_bench of ram_single_port_test_bench is
-  component single_port_ram is
+architecture test_bench of ram_dual_port_test_bench is
+  component dual_port_ram is
     generic (n: positive:= 4;
              m: positive:= 4);
-    port (rw, enable: in std_logic;
-          address: in unsigned(n-1 downto 0);
-          data: inout std_logic_vector (m-1 downto 0));
+    port (r, w: in std_logic;
+          address_in: in unsigned(n-1 downto 0);
+          address_out: in unsigned(n-1 downto 0);
+          data_in: in std_logic_vector (m-1 downto 0);
+          data_out: out std_logic_vector (m-1 downto 0));
   end component;
 
   -- signals to RAM
   constant n: positive:=4;
   constant m: positive:=4;
-  signal rw, enable: std_logic;
-  signal address: unsigned(n-1 downto 0);
-  signal data: std_logic_vector(m-1 downto 0);
+  signal r,w: std_logic;
+  signal address_in: unsigned(n-1 downto 0);
+  signal address_out: unsigned(n-1 downto 0);
+  signal data_in: std_logic_vector(m-1 downto 0);
+  signal data_out: std_logic_vector(m-1 downto 0);
 
 begin
   -- applying inputs to ram
-  dut: single_port_ram port map(rw, enable, address, data);
+  dut: dual_port_ram port map(r, w, address_in, address_out, data_in, data_out);
 
 
   -- applying testbench
@@ -41,12 +45,12 @@ begin
     variable message: string (1 TO 44);
     variable pause: time;
 
-    variable rw_in_file, enable_in_file: bit;
-    variable address_in_file:bit_vector(n-1 downto 0);
-    variable write_data_in_file: bit_vector (m-1 downto 0);
-    variable read_data_out_file: bit_vector (m-1 downto 0);
+    variable r_in_file, w_in_file: bit;
+    variable address_in_in_file:bit_vector(n-1 downto 0);
+    variable address_out_in_file:bit_vector(n-1 downto 0);
+    variable data_in_in_file: bit_vector (m-1 downto 0);
+    variable data_out_out_file: bit_vector (m-1 downto 0);
 
-    variable read_data: std_logic_vector (m-1 downto 0);
 
     -- function to covert std to string
     function to_bstring(sl : std_logic) return string is
@@ -70,10 +74,11 @@ begin
 
     begin
       --initial values
-      rw <='1';
-      enable <= '1';
-      address <= "0000";
-      data <= "0000";
+      r <= '0';
+      w <= '0';
+      address_in <= "0000";
+      address_out <= "0000";
+      data_in <= "0000";
       wait for 15 ns;
 
       -- first title line
@@ -83,69 +88,66 @@ begin
 
         -- reading simulation data from file
         readline (vectors_file, simulation_l);
-        read (simulation_l, rw_in_file);
-        read (simulation_l, enable_in_file);
-        read (simulation_l, address_in_file);
-        read (simulation_l, write_data_in_file);
+        read (simulation_l, r_in_file);
+        read (simulation_l, w_in_file);
+        read (simulation_l, address_in_in_file);
+        read (simulation_l, address_out_in_file);
+        read (simulation_l, data_in_in_file);
         read (simulation_l, pause);
-        read (simulation_l, read_data_out_file);
+        read (simulation_l, data_out_out_file);
         read (simulation_l, message);
 
         -- Applying simulation inputs
 
-        case enable_in_file is
-          when '0'  => enable <= '0';
-          when '1'  => enable <= '1';
+        case r_in_file is
+          when '0'  => r <= '0';
+          when '1'  => r <= '1';
           when others => null;
         end case;
 
 
-        address <= unsigned(to_stdlogicvector ((address_in_file )));
+        case w_in_file is
+          when '0'  => w <= '0';
+          when '1'  => w <= '1';
+          when others => null;
+        end case;
 
-        if rw_in_file ='1' then
-          rw <= '1';
-          data <= to_stdlogicvector(write_data_in_file);
-          end if;
+        address_in <= unsigned(to_stdlogicvector(address_in_in_file));
+        address_out <= unsigned(to_stdlogicvector(address_out_in_file));
+        data_in <= to_stdlogicvector(data_in_in_file);
 
 
-          wait for pause;
 
-        if rw_in_file ='0' then
-          rw <= '0';
-          read_data := data;
-          data <= (others => 'Z');
 
-        end if;
-
+        wait for pause;
 
         -- writing output to results file
         write (result_l, string'("Time is now: "));
         write (result_l, NOW);
 
-        write (result_l, string'(", rw="));
-        write (result_l, rw_in_file);
+        write (result_l, string'(", r="));
+        write (result_l, r_in_file);
+
+        write (result_l, string'(", w="));
+        write (result_l, w_in_file);
 
 
-        write (result_l, string'(", enable="));
-        write (result_l, enable_in_file);
+        write (result_l, string'(", address_in="));
+        write (result_l, address_in_in_file);
 
-        write (result_l, string'(", address="));
-        write (result_l, address_in_file);
+        write (result_l, string'(", address_out="));
+        write (result_l, address_out_in_file);
 
-        write (result_l, string'(", write_data_in="));
-        write (result_l, write_data_in_file);
+        write (result_l, string'(", data_in="));
+        write (result_l, data_in_in_file);
 
-        write (result_l, string'(", read_data_out="));
-        write (result_l, read_data_out_file);
 
-        write (result_l, string'(", memory data="));
-        write (result_l, to_bstring(data));
-
+        write (result_l, string'(", data_out="));
+        write (result_l, to_bstring(data_out));
 
 
         -- checking for input validation
-        if rw_in_file = '0' then -- if it read evaluate validation
-          if read_data /= to_stdlogicvector(read_data_out_file) then
+          if data_out /= to_stdlogicvector(data_out_out_file) then
 
             write (result_l, string'(" FAILED, Error Messages: "));
             write (result_l, message);
@@ -154,7 +156,6 @@ begin
             write (result_l, string'(" Test PASSED"));
 
           end if;
-        end if;
 
 
         -- writing into results file

@@ -2,4 +2,4 @@ Time is now: 30 ns, rw=1, enable=1, address=0000, write_data_in=1100, read_data_
 Time is now: 45 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_out=1100, memory data=1100 Test PASSED
 Time is now: 60 ns, rw=1, enable=1, address=1000, write_data_in=0101, read_data_out=1100, memory data=0101
 Time is now: 75 ns, rw=0, enable=1, address=1000, write_data_in=0101, read_data_out=0101, memory data=0101 Test PASSED
-Time is now: 90 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_out=1100, memory data=X10X FAILED, Error Messages:  all ones test.                             
+Time is now: 90 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_out=1100, memory data=1100 Test PASSED
