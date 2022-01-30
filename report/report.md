@@ -215,4 +215,94 @@ data_in=1000, data_out=1000 Test PASSED
 ![RAM dual port](../ram_dual_port/sim.png){#ram_dual_port}
 
 
+# ROM
+
+## Test strategy 
+
+| enable | address |   data | comment                          |
+|--------+---------+--------+----------------------------------|
+|      1 |     000 | 000000 | initial value.                   |
+|      1 |     111 | 110001 | data stuck at 0.                 |
+|      1 |     010 | 000100 | data stuck at 1.                 |
+|      1 |     110 | 100100 | Random test.                     |
+|      0 |     110 | 100100 | disable the rom destroys data.   |
+|      1 |     101 | 011001 | ROM is now working after enable. |
+
+
+
+## Test Output
+
+```
+Time is now: 30 ns, enable=1, address=000, Actual data=000000, data=000000 Test PASSED
+Time is now: 45 ns, enable=1, address=111, Actual data=110001, data=110001 Test PASSED
+Time is now: 60 ns, enable=1, address=010, Actual data=000100, data=000100 Test PASSED
+Time is now: 75 ns, enable=1, address=110, Actual data=100100, data=100100 Test PASSED
+Time is now: 90 ns, enable=0, address=110, Actual data=100100, data=ZZZZZZ Test PASSED
+Time is now: 105 ns, enable=1, address=101, Actual data=011001, data=011001 Test PASSED
+```
+
+
+![ROM](../rom/sim.png){#rom}
+
+
+# Shift Register
+
+## Test strategy
+
+| clk | clr | l_in | r_in | s0 | s1 |    d |    q | comment                       |
+|-----+-----+------+------+----+----+------+------+-------------------------------|
+|   1 |   1 |    0 |    0 |  1 |  1 | 1111 | 1111 | stuck at 0 output.            |
+|   0 |   1 |    0 |    0 |  1 |  0 | 1111 | 1111 | stuck at 1 output.            |
+|   1 |   1 |    0 |    0 |  1 |  0 | 1111 | 1110 | stuck at 1 output.            |
+|   0 |   1 |    0 |    0 |  1 |  0 | 1111 | 1110 | Not shifting left.            |
+|   1 |   1 |    0 |    0 |  1 |  0 | 1111 | 1100 | Not shifting left.            |
+|   0 |   1 |    0 |    1 |  1 |  0 | 1111 | 1100 | r_in stuck at 0.              |
+|   1 |   1 |    0 |    1 |  1 |  0 | 1111 | 1001 | r_in stuck at 0.              |
+|   0 |   1 |    0 |    1 |  0 |  1 | 1111 | 1001 | stuck at shifting left state. |
+|   1 |   1 |    0 |    1 |  0 |  1 | 1111 | 0100 | stuck at shifting left state. |
+|   0 |   1 |    1 |    1 |  0 |  1 | 1111 | 0100 | l_in stuck at 0.              |
+|   1 |   1 |    1 |    1 |  0 |  1 | 1111 | 1010 | l_in stuck at 0.              |
+|   1 |   0 |    1 |    1 |  0 |  1 | 1111 | 0000 | Not clearing the output.      |
+|   0 |   1 |    1 |    1 |  0 |  1 | 1111 | 0000 | random test after clear.      |
+|   1 |   1 |    1 |    1 |  0 |  1 | 1111 | 1000 | random test after clear.      |
+
+
+## Test output
+
+```
+Time is now: 30 ns, clk=1, clr=1, l_in=0, r_in=0, s0=1, s1=1, d=1111, Actual q=1111
+, q=1111 Test PASSED
+Time is now: 45 ns, clk=0, clr=1, l_in=0, r_in=0, s0=1, s1=0, d=1111, Actual q=1111,
+q=1111 Test PASSED
+Time is now: 60 ns, clk=1, clr=1, l_in=0, r_in=0, s0=1, s1=0, d=1111, Actual q=1110,
+q=1110 Test PASSED
+Time is now: 75 ns, clk=0, clr=1, l_in=0, r_in=0, s0=1, s1=0, d=1111, Actual q=1110,
+q=1110 Test PASSED
+Time is now: 90 ns, clk=1, clr=1, l_in=0, r_in=0, s0=1, s1=0, d=1111, Actual q=1100,
+q=1100 Test PASSED
+Time is now: 105 ns, clk=0, clr=1, l_in=0, r_in=1, s0=1, s1=0, d=1111, Actual q=1100,
+q=1100 Test PASSED
+Time is now: 120 ns, clk=1, clr=1, l_in=0, r_in=1, s0=1, s1=0, d=1111, Actual q=1001,
+q=1001 Test PASSED
+Time is now: 135 ns, clk=0, clr=1, l_in=0, r_in=1, s0=0, s1=1, d=1111, Actual q=1001,
+q=1001 Test PASSED
+Time is now: 150 ns, clk=1, clr=1, l_in=0, r_in=1, s0=0, s1=1, d=1111, Actual q=0100,
+q=0100 Test PASSED
+Time is now: 165 ns, clk=0, clr=1, l_in=1, r_in=1, s0=0, s1=1, d=1111, Actual q=0100,
+q=0100 Test PASSED
+Time is now: 180 ns, clk=1, clr=1, l_in=1, r_in=1, s0=0, s1=1, d=1111, Actual q=1010,
+q=1010 Test PASSED
+Time is now: 195 ns, clk=1, clr=0, l_in=1, r_in=1, s0=0, s1=1, d=1111, Actual q=0000,
+q=0000 Test PASSED
+Time is now: 210 ns, clk=0, clr=1, l_in=1, r_in=1, s0=0, s1=1, d=1111, Actual q=0000,
+q=0000 Test PASSED
+Time is now: 225 ns, clk=1, clr=1, l_in=1, r_in=1, s0=0, s1=1, d=1111, Actual q=1000,
+q=1000 Test PASSED
+```
+
+![Shift Register](../shift_register/sim.png){#shift_register}
+
+
+
+
 

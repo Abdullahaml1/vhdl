@@ -1,0 +1,15 @@
+clk-clr-l_in-r_in-s0-s1-d-delay-q_out
+1 1 0 0 1 1 1111 15 ns 1111 stuck at 0 output.                            
+0 1 0 0 1 0 1111 15 ns 1111 stuck at 1 output.                            
+1 1 0 0 1 0 1111 15 ns 1110 stuck at 1 output.                            
+0 1 0 0 1 0 1111 15 ns 1110 Not shifting left.                            
+1 1 0 0 1 0 1111 15 ns 1100 Not shifting left.                          
+0 1 0 1 1 0 1111 15 ns 1100 r_in stuck at 0.                    
+1 1 0 1 1 0 1111 15 ns 1001 r_in stuck at 0.                          
+0 1 0 1 0 1 1111 15 ns 1001 stuck at shifting left state.                 
+1 1 0 1 0 1 1111 15 ns 0100 stuck at shifting left state.                  
+0 1 1 1 0 1 1111 15 ns 0100 l_in stuck at 0.                          
+1 1 1 1 0 1 1111 15 ns 1010 l_in stuck at 0.                          
+1 0 1 1 0 1 1111 15 ns 0000 Not clearing the output.                    
+0 1 1 1 0 1 1111 15 ns 0000 random test after clear.               
+1 1 1 1 0 1 1111 15 ns 1000 random test after clear.                      

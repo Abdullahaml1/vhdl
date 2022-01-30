@@ -1,11 +1,11 @@
 # Module name
-MOD := rom_test_bench
+MOD := shift_register_test_bench
 
 # File to be tested
-SRC := rom.vhd
+SRC := shift_register.vhd
 
 # Test File
-TEST := rom_test_bench.vhd
+TEST := shift_register_test_bench.vhd
 
 # Simulation File name
 SIM:= sim.vcd
