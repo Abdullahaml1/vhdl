@@ -3,3 +3,11 @@ Time is now: 45 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_
 Time is now: 60 ns, rw=1, enable=1, address=1000, write_data_in=0101, read_data_out=1100, memory data=0101
 Time is now: 75 ns, rw=0, enable=1, address=1000, write_data_in=0101, read_data_out=0101, memory data=0101 Test PASSED
 Time is now: 90 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_out=1100, memory data=1100 Test PASSED
+Time is now: 105 ns, rw=0, enable=0, address=1000, write_data_in=0101, read_data_out=0101, memory data=ZZZZ FAILED, Error Messages:  Enable is now working.                     
+Time is now: 120 ns, rw=1, enable=1, address=1111, write_data_in=1101, read_data_out=1100, memory data=1101
+Time is now: 135 ns, rw=0, enable=1, address=1111, write_data_in=1101, read_data_out=1101, memory data=1101 Test PASSED
+Time is now: 150 ns, rw=1, enable=1, address=1100, write_data_in=1000, read_data_out=1000, memory data=1000
+Time is now: 165 ns, rw=0, enable=1, address=1100, write_data_in=1000, read_data_out=1000, memory data=1000 Test PASSED
+Time is now: 180 ns, rw=0, enable=1, address=0000, write_data_in=1100, read_data_out=1100, memory data=1100 Test PASSED
+Time is now: 195 ns, rw=1, enable=1, address=1000, write_data_in=1111, read_data_out=1111, memory data=1111
+Time is now: 210 ns, rw=0, enable=1, address=1000, write_data_in=1111, read_data_out=1111, memory data=1111 Test PASSED

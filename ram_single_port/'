@@ -10,5 +10,3 @@ rw-enable-address-datain-dataout
 1 1 1100 1000 15 ns 1000 corner cases (middle address).                                  
 0 1 1100 1000 15 ns 1000 corner cases (middle address).                                    
 0 1 0000 1100 15 ns 1100 Not storing previous data.                                    
-1 1 1000 1111 15 ns 1111 Not accepting new data.                                            
-0 1 1000 1111 15 ns 1111 Not accepting new data.                                            

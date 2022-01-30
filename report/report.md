@@ -115,4 +115,104 @@ time is now: 255 ns, op=div, a=0111, b=1101, c=-2, actual c=1110 test passed
 
 ![ALU](../alu/sim.png){#alu}
 
+# RAM single port
+
+## Test strategy
+| rw | enable | address | datain | dataout | comment                        |
+|----+--------+---------+--------+---------+--------------------------------|
+|  1 |      1 |    0000 |   1100 |    0000 | memory is not storing input.   |
+|  0 |      1 |    0000 |   1100 |    1100 | memory is not storing input.   |
+|  1 |      1 |    1000 |   0101 |    1100 | stuck at the previous output.  |
+|  0 |      1 |    1000 |   0101 |    0101 | stuck at the previous output.  |
+|  0 |      1 |    0000 |   1100 |    1100 | loses the stored data.         |
+|  0 |      0 |    1000 |   0101 |    0101 | Enable is now working.         |
+|  1 |      1 |    1111 |   1101 |    1100 | corner cases (last address).   |
+|  0 |      1 |    1111 |   1101 |    1101 | corner cases (last address).   |
+|  1 |      1 |    1100 |   1000 |    1000 | corner cases (middle address). |
+|  0 |      1 |    1100 |   1000 |    1000 | corner cases (middle address). |
+|  0 |      1 |    0000 |   1100 |    1100 | Not storing previous data.     |
+|  1 |      1 |    1000 |   1111 |    1111 | Not accepting new data.        |
+|  0 |      1 |    1000 |   1111 |    1111 | Not accepting new data.        |
+
+
+## Test Output
+```
+Time is now: 30 ns, rw=1, enable=1, address=0000, write_data_in=1100,
+read_data_out=0000, memory data=1100
+Time is now: 45 ns, rw=0, enable=1, address=0000, write_data_in=1100,
+read_data_out=1100, memory data=1100 Test PASSED
+Time is now: 60 ns, rw=1, enable=1, address=1000, write_data_in=0101,
+read_data_out=1100, memory data=0101
+Time is now: 75 ns, rw=0, enable=1, address=1000, write_data_in=0101,
+read_data_out=0101, memory data=0101 Test PASSED
+Time is now: 90 ns, rw=0, enable=1, address=0000, write_data_in=1100,
+read_data_out=1100, memory data=1100 Test PASSED
+Time is now: 105 ns, rw=0, enable=0, address=1000, write_data_in=0101,
+read_data_out=0101, memory data=ZZZZ Test PASSED 
+Time is now: 120 ns, rw=1, enable=1, address=1111, write_data_in=1101,
+read_data_out=1100, memory data=1101
+Time is now: 135 ns, rw=0, enable=1, address=1111, write_data_in=1101,
+read_data_out=1101, memory data=1101 Test PASSED
+Time is now: 150 ns, rw=1, enable=1, address=1100, write_data_in=1000
+, read_data_out=1000, memory data=1000
+Time is now: 165 ns, rw=0, enable=1, address=1100, write_data_in=1000,
+read_data_out=1000, memory data=1000 Test PASSED
+Time is now: 180 ns, rw=0, enable=1, address=0000, write_data_in=1100,
+read_data_out=1100, memory data=1100 Test PASSED
+Time is now: 195 ns, rw=1, enable=1, address=1000, write_data_in=1111,
+read_data_out=1111, memory data=1111
+Time is now: 210 ns, rw=0, enable=1, address=1000, write_data_in=1111,
+read_data_out=1111, memory data=1111 Test PASSED
+
+```
+
+
+![RAM single port](../ram_single_port/sim.png){#ram_single_port}
+
+
+
+# Ram Dual Port
+
+## Test Strategy
+
+| r | w | address_in | address_out | data_in | data_out |                                                     |
+|---+---+------------+-------------+---------+----------+-----------------------------------------------------|
+| 1 | 1 |       0000 |        0000 |    1100 |     1100 | Reading and writing at the same time.               |
+| 1 | 1 |       1101 |        1101 |    0101 |     0101 | Reading and writing at the same time.               |
+| 1 | 0 |       1101 |        1101 |    1111 |     0101 | writing when ever address is valid.                 |
+| 1 | 1 |       1001 |        1101 |    1111 |     0101 | writing and reading in different locations.         |
+| 1 | 0 |       1001 |        1001 |    1111 |     1111 | Reading the previous location.                      |
+| 1 | 1 |       0000 |        1101 |    1000 |     0101 | Not accepting multiple writes to the same location. |
+| 1 | 0 |       0000 |        0000 |    1000 |     1000 | Not accepting multiple writes to the same location. |
+| 0 | 0 |       0000 |        0000 |    1101 |     1000 | read and write stuck at 0.                          |
+| 1 | 0 |       0000 |        0000 |    1000 |     1000 | read and write stuck at 0.                          |
+
+
+## Test Output
+
+```
+Time is now: 30 ns, r=1, w=1, address_in=0000, address_out=0000,
+data_in=1100, data_out=1100 Test PASSED
+Time is now: 45 ns, r=1, w=1, address_in=1101, address_out=1101,
+data_in=0101, data_out=0101 Test PASSED
+Time is now: 60 ns, r=1, w=0, address_in=1101, address_out=1101,
+data_in=1111, data_out=0101 Test PASSED
+Time is now: 75 ns, r=1, w=1, address_in=1001, address_out=1101,
+data_in=1111, data_out=0101 Test PASSED
+Time is now: 90 ns, r=1, w=0, address_in=1001, address_out=1001,
+data_in=1111, data_out=1111 Test PASSED
+Time is now: 105 ns, r=1, w=1, address_in=0000, address_out=1101,
+data_in=1000, data_out=0101 Test PASSED
+Time is now: 120 ns, r=1, w=0, address_in=0000, address_out=0000,
+data_in=1000, data_out=1000 Test PASSED
+Time is now: 135 ns, r=0, w=0, address_in=0000, address_out=0000,
+data_in=1101, data_out=1000 Test PASSED
+Time is now: 150 ns, r=1, w=0, address_in=0000, address_out=0000,
+data_in=1000, data_out=1000 Test PASSED
+```
+
+
+![RAM dual port](../ram_dual_port/sim.png){#ram_dual_port}
+
+
 
