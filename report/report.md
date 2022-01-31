@@ -1,6 +1,28 @@
-% CSE635, Assignment 3, Main Memory, and Virtual Memory
+% CSE620, HDL Project
 % Abdullah Aml;2101398
 % 
+
+# Overview 
+All the code is [[HERE]](https://github.com/Abdullahaml1/vhdl) on my github repository. Every file on the repository contains the following:
+```
+ram_dual_port/
+-- Makefile
+-- ram_dual_port_test_bench.vhd
+-- ram_dual_port.vhd
+-- results.txt
+-- sim.png
+-- sim.vcd
+-- test_vectors.txt
+-- work-obj93.cf
+```
+
+* `Makefile`: compile and run scripts
+* `test_vector.txt`: a file to input values.
+* `results.text`: results of the test bench.
+* `xxx_test_bench.vhd`: test bench code.
+* `sim.png` simulation screenshot.
+* `sim.vcd` simulation data.
+
 
 # 1-Bit Latch
 
@@ -301,6 +323,82 @@ q=1000 Test PASSED
 ```
 
 ![Shift Register](../shift_register/sim.png){#shift_register}
+
+
+# Priority Encoder
+
+## Test strategy
+
+|  sel |   z | comment                   |
+|------+-----+---------------------------|
+| 1000 | 000 | stuck at 1 output.        |
+| 0010 | 010 | not responding for input. |
+| 0001 | 011 | corner case.              |
+| 0100 | 001 | corner case.              |
+
+
+## Test Output
+
+```
+Time is now: 30 ns, sel=1000, Actual z=000, z=000 Test PASSED
+Time is now: 45 ns, sel=0010, Actual z=010, z=010 Test PASSED
+Time is now: 60 ns, sel=0001, Actual z=011, z=011 Test PASSED
+Time is now: 75 ns, sel=0100, Actual z=001, z=001 Test PASSED
+```
+
+![Priority Encoder](../priority/sim.png){#priority}
+
+
+
+# FSM Mealy 2p
+
+
+# Test strategy
+
+| clk | reset | x | y | comment          |
+|-----+-------+---+---+------------------|
+|   0 |     0 | 1 | 1 | to odd state.    |
+|   1 |     0 | 1 | 0 | to odd state.    |
+|   0 |     0 | 0 | 1 | staying at odd.  |
+|   1 |     0 | 0 | 1 | staying at odd.  |
+|   0 |     0 | 1 | 0 | going to even.   |
+|   1 |     0 | 1 | 1 | going to even.   |
+|   0 |     0 | 0 | 0 | staying in even. |
+|   1 |     0 | 0 | 0 | staying in even. |
+
+
+
+## Test output
+
+
+```
+Time is now: 30 ns, reset=0, clk=0, x=1, Actual y=1, y=1 Test PASSED
+Time is now: 45 ns, reset=0, clk=1, x=1, Actual y=0, y=0 Test PASSED
+Time is now: 60 ns, reset=0, clk=0, x=0, Actual y=1, y=1 Test PASSED
+Time is now: 75 ns, reset=0, clk=1, x=0, Actual y=1, y=1 Test PASSED
+Time is now: 90 ns, reset=0, clk=0, x=1, Actual y=0, y=0 Test PASSED
+Time is now: 105 ns, reset=0, clk=1, x=1, Actual y=1, y=1 Test PASSED
+Time is now: 120 ns, reset=0, clk=0, x=0, Actual y=0, y=0 Test PASSED
+Time is now: 135 ns, reset=0, clk=1, x=0, Actual y=0, y=0 Test PASSED
+```
+
+
+![Finite State Machine](../fsm_mealy_2p/sim.png){#fsm_mealy_2p}
+
+# Tools
+
+* [[GHDL]](https://ghdl.github.io/ghdl/): Free and open-source analyzer, compiler, simulator and (experimental) synthesizer for VHDL 
+* [[gtkwave]](https://github.com/gtkwave/gtkwave): An open source simulation viewer.
+* Makefile: script automation tool fro development.
+* [[github]](https://github.com/): source control platform.
+* [[spacemacs]](https://www.spacemacs.org/): coding text editor.
+* [[pandoc]](https://pandoc.org/): A file converter and styling. I wrote the report in Markdown language ant it generates the styles for the report automatic.
+
+# Resource
+
+* [[print string to file]](https://stackoverflow.com/questions/24329155/is-there-a-way-to-print-the-values-of-a-signal-to-a-file-from-a-modelsim-simulat)
+
+
 
 
 

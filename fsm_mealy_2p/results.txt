@@ -1,0 +1,8 @@
+Time is now: 30 ns, reset=0, clk=0, x=1, Actual y=1, y=1 Test PASSED
+Time is now: 45 ns, reset=0, clk=1, x=1, Actual y=0, y=0 Test PASSED
+Time is now: 60 ns, reset=0, clk=0, x=0, Actual y=1, y=1 Test PASSED
+Time is now: 75 ns, reset=0, clk=1, x=0, Actual y=1, y=1 Test PASSED
+Time is now: 90 ns, reset=0, clk=0, x=1, Actual y=0, y=0 Test PASSED
+Time is now: 105 ns, reset=0, clk=1, x=1, Actual y=1, y=1 Test PASSED
+Time is now: 120 ns, reset=0, clk=0, x=0, Actual y=0, y=0 Test PASSED
+Time is now: 135 ns, reset=0, clk=1, x=0, Actual y=0, y=0 Test PASSED

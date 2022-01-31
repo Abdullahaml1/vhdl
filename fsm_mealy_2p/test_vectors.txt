@@ -1,0 +1,9 @@
+clk-reset-x-delay-y
+0 0 1 15 ns 1 to odd state.                                         
+1 0 1 15 ns 0 to odd state.                                         
+0 0 0 15 ns 1 staying at odd.                                             
+1 0 0 15 ns 1 staying at odd.                                       
+0 0 1 15 ns 0 going to even.                                           
+1 0 1 15 ns 1 going to even.                                             
+0 0 0 15 ns 0 staying in even.                                           
+1 0 0 15 ns 0 staying in even.                                             

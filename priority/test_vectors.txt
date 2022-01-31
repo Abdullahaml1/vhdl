@@ -1,0 +1,5 @@
+sel-delay-z
+1000 15 ns 000 stuck at 1 output.                            
+0010 15 ns 010 not responding for input.                            
+0001 15 ns 011 corner case.                                            
+0100 15 ns 001 corner case.                                            
