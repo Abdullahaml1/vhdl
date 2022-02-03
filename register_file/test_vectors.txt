@@ -1,0 +1,10 @@
+r-w-address_in-address_out-data_in-delay-data_out
+1 1 0000 0000 1100 15 ns 1100 Reading and writing at the same time.                           
+1 1 1101 1101 0101 15 ns 0101 Reading and writing at the same time.                           
+1 0 1101 1101 1111 15 ns 0101 writing when ever address is valid.                               
+1 1 1001 1101 1111 15 ns 0101 writing and reading in different locations.              
+1 0 1001 1001 1111 15 ns 1111 Reading the previous location.                     
+1 1 0000 1101 1000 15 ns 0101 Not accepting multiple writes to the same location.                
+1 0 0000 0000 1000 15 ns 1000 Not accepting multiple writes to the same location.                
+0 0 0000 0000 1101 15 ns 1000 read and write stuck at 0.                                
+1 0 0000 0000 1000 15 ns 1000 read and write stuck at 0.                                
