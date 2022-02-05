@@ -162,6 +162,7 @@ will pop out a window that contain the simulation results:
 
 
 # Resources
+* [vhdl palylist](https://www.youtube.com/playlist?list=PLbxswoh1SoPn_xvkqJxrIfD2XAxRr_iMx)
 * [opensouce EDA tool list](https://opencores.org/howto/eda)
 * [ghdl docs](https://ghdl.github.io/ghdl/index.html)
 * [youtube getting started video](https://www.youtube.com/watch?v=dvLeDNbXfFw)
