@@ -3,7 +3,7 @@
 % 
 
 # Code structure 
-All the codes are [[HERE]](https://github.com/Abdullahaml1/vhdl) on my github repository. project structure
+All the codes are [[HERE]](https://github.com/Abdullahaml1/vhdl/tree/main/register_file) on my github repository. project structure
 ```
 register_file/
 --- Makefile
@@ -48,6 +48,8 @@ make sim
 * Register File forwarding: if read and write happen at same time, It writes then reads.
 
 # Simple sketch 
+
+![Register File hand written schematic](rf_sch.png)
 
 # Code 
 
@@ -210,6 +212,8 @@ actual read_data1=1010, actual read_data2=1011, read_data1=1010, read_data2=1011
 # Test Bench Simulation
 
 ![Register Test Bench Simulation](../sim.png)
+
+\newpage
 
 # Tools
 
