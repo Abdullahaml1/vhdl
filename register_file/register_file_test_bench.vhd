@@ -10,9 +10,9 @@ end entity;
 
 architecture test_bench of register_file_test_bench is
   component register_file is
-    generic(n: positive:=5;
-            m: positive:= 32);
-    port(clk, write_enable1, write_enable2, write_priority: in std_logic;
+    generic(n: positive:= 4;
+            m: positive:= 4);
+    port(write_enable1, write_enable2, write_priority: in std_logic;
          read_reg1, read_reg2: in unsigned(n-1 downto 0);
          write_reg1, write_reg2: in unsigned(n-1 downto 0);
          write_data1, write_data2: in std_logic_vector(m-1 downto 0);
@@ -22,18 +22,18 @@ architecture test_bench of register_file_test_bench is
 
 
   -- signals to RF
-  constant n: positive:=5;
-  constant m: positive:=32;
+  constant n: positive:= 4;
+  constant m: positive:= 4;
 
-  signal clk, write_enable1, write_enable2, write_priority: std_logic;
+  signal write_enable1, write_enable2, write_priority: std_logic;
   signal read_reg1, read_reg2: unsigned(n-1 downto 0);
   signal write_reg1, write_reg2: unsigned(n-1 downto 0);
   signal write_data1, write_data2: std_logic_vector(m-1 downto 0);
-  signal read_data1, read_data2: std_logic_vector(m-1 downto 0));
+  signal read_data1, read_data2: std_logic_vector(m-1 downto 0);
 
 begin
   -- applying inputs to ram
-  dut: register_file port map(clk, write_enable1, write_enable2, write_priority, read_reg1, read_reg2, write_reg1, write_reg2, write_data1, write_data2, read_data1, read_data2);
+  dut: register_file port map(write_enable1, write_enable2, write_priority, read_reg1, read_reg2, write_reg1, write_reg2, write_data1, write_data2, read_data1, read_data2);
 
 
   -- applying testbench
@@ -44,13 +44,13 @@ begin
     file results_file: text OPEN WRITE_MODE IS "results.txt";
 
     -- variables to parse the file
-    variable simulation_l, result_l : line;
-    variable message: string (1 TO 35);
+    variable simulation_l, result_l, empty_l : line;
+    variable message: string (1 TO 50);
     variable pause: time;
 
 
-    variable clk_in_file, write_enable1_in_file: bit;
-    variable write_enable2_in_file, write_priority_in_file: bit;
+    variable write_enable1_in_file, write_enable2_in_file: bit;
+    variable write_priority_in_file: bit;
     variable read_reg1_in_file: bit_vector(n-1 downto 0);
     variable read_reg2_in_file: bit_vector(n-1 downto 0);
     variable write_reg1_in_file: bit_vector(n-1 downto 0);
@@ -59,7 +59,7 @@ begin
     variable write_data2_in_file: bit_vector(m-1 downto 0);
 
     variable read_data1_out_file: bit_vector(m-1 downto 0);
-    variable read_data2_out_file: bit_vector(m-1 downto 0));
+    variable read_data2_out_file: bit_vector(m-1 downto 0);
 
 
 
@@ -100,9 +100,8 @@ begin
 
     begin
       --initial values
-      clk <=0;
-      write_enable1 <='0';
-      write_enable2 <='0';
+      write_enable1 <='1';
+      write_enable2 <='1';
       write_priority <='0';
 
       read_reg1 <= (others => '0');
@@ -121,7 +120,6 @@ begin
 
         -- reading simulation data from file
         readline (vectors_file, simulation_l);
-        read (simulation_l, clk_in_file);
         read (simulation_l, write_enable1_in_file);
         read (simulation_l, write_enable2_in_file);
         read (simulation_l, write_priority_in_file);
@@ -139,7 +137,6 @@ begin
         -- Applying simulation inputs
 
         --initial values
-        clk <= to_std_logic(clk_in_file);
         write_enable1 <= to_std_logic(write_enable1_in_file);
         write_enable2 <= to_std_logic(write_enable2_in_file);
         write_priority <= to_std_logic(write_priority_in_file);
@@ -159,9 +156,6 @@ begin
         -- writing output to results file
         write (result_l, string'("Time is now: "));
         write (result_l, NOW);
-
-        write (result_l, string'(", clk="));
-        write (result_l, clk_in_file);
 
         write (result_l, string'(", write_enable1="));
         write (result_l, write_enable1_in_file);
@@ -191,10 +185,10 @@ begin
         write (result_l, write_data2_in_file);
 
         write (result_l, string'(", actual read_data1="));
-        write (result_l, read_data1_in_file);
+        write (result_l, read_data1_out_file);
 
         write (result_l, string'(", actual read_data2="));
-        write (result_l, read_data2_in_file);
+        write (result_l, read_data2_out_file);
 
         write (result_l, string'(", read_data1="));
         write (result_l, to_bstring(read_data1));
@@ -218,6 +212,7 @@ begin
 
         -- writing into results file
         writeline (results_file, result_l);
+        writeline (results_file, empty_l);
       end loop;
 
       assert false report "End of Test";

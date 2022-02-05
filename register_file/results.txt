@@ -1,9 +1,24 @@
-Time is now: 30 ns, r=1, w=1, address_in=0000, address_out=0000, data_in=1100, data_out=1100 Test PASSED
-Time is now: 45 ns, r=1, w=1, address_in=1101, address_out=1101, data_in=0101, data_out=0101 Test PASSED
-Time is now: 60 ns, r=1, w=0, address_in=1101, address_out=1101, data_in=1111, data_out=0101 Test PASSED
-Time is now: 75 ns, r=1, w=1, address_in=1001, address_out=1101, data_in=1111, data_out=0101 Test PASSED
-Time is now: 90 ns, r=1, w=0, address_in=1001, address_out=1001, data_in=1111, data_out=1111 Test PASSED
-Time is now: 105 ns, r=1, w=1, address_in=0000, address_out=1101, data_in=1000, data_out=0101 Test PASSED
-Time is now: 120 ns, r=1, w=0, address_in=0000, address_out=0000, data_in=1000, data_out=1000 Test PASSED
-Time is now: 135 ns, r=0, w=0, address_in=0000, address_out=0000, data_in=1101, data_out=1000 Test PASSED
-Time is now: 150 ns, r=1, w=0, address_in=0000, address_out=0000, data_in=1000, data_out=1000 Test PASSED
+Time is now: 30 ns, write_enable1=1, write_enable2=1, write_priority=0, read_reg1=0000, read_reg2=0001, write_reg1=0000, write_reg2=0001, write_data1=0000, write_data2=0001, actual read_data1=0000, actual read_data2=0001, read_data1=0000, read_data2=0001 Test PASSED
+
+Time is now: 45 ns, write_enable1=0, write_enable2=0, write_priority=0, read_reg1=0000, read_reg2=0001, write_reg1=0000, write_reg2=0001, write_data1=0000, write_data2=0001, actual read_data1=0000, actual read_data2=0001, read_data1=0000, read_data2=0001 Test PASSED
+
+Time is now: 60 ns, write_enable1=1, write_enable2=1, write_priority=0, read_reg1=0000, read_reg2=0001, write_reg1=1000, write_reg2=1001, write_data1=1000, write_data2=1001, actual read_data1=0000, actual read_data2=0001, read_data1=0000, read_data2=0001 Test PASSED
+
+Time is now: 75 ns, write_enable1=0, write_enable2=0, write_priority=0, read_reg1=1000, read_reg2=1001, write_reg1=1000, write_reg2=1001, write_data1=1000, write_data2=1001, actual read_data1=1000, actual read_data2=1001, read_data1=1000, read_data2=1001 Test PASSED
+
+Time is now: 90 ns, write_enable1=1, write_enable2=1, write_priority=0, read_reg1=1101, read_reg2=1101, write_reg1=1101, write_reg2=1101, write_data1=1111, write_data2=0011, actual read_data1=1111, actual read_data2=1111, read_data1=1111, read_data2=1111 Test PASSED
+
+Time is now: 105 ns, write_enable1=1, write_enable2=1, write_priority=1, read_reg1=1101, read_reg2=1101, write_reg1=1101, write_reg2=1101, write_data1=1111, write_data2=0011, actual read_data1=0011, actual read_data2=0011, read_data1=0011, read_data2=0011 Test PASSED
+
+Time is now: 120 ns, write_enable1=1, write_enable2=0, write_priority=1, read_reg1=1001, read_reg2=1001, write_reg1=1001, write_reg2=1001, write_data1=1001, write_data2=0111, actual read_data1=1001, actual read_data2=1001, read_data1=1001, read_data2=1001 Test PASSED
+
+Time is now: 135 ns, write_enable1=1, write_enable2=0, write_priority=0, read_reg1=1001, read_reg2=1001, write_reg1=1001, write_reg2=1001, write_data1=1001, write_data2=0111, actual read_data1=1001, actual read_data2=1001, read_data1=1001, read_data2=1001 Test PASSED
+
+Time is now: 150 ns, write_enable1=0, write_enable2=1, write_priority=0, read_reg1=1001, read_reg2=1001, write_reg1=1001, write_reg2=1001, write_data1=1001, write_data2=0111, actual read_data1=0111, actual read_data2=0111, read_data1=0111, read_data2=0111 Test PASSED
+
+Time is now: 165 ns, write_enable1=0, write_enable2=1, write_priority=1, read_reg1=1001, read_reg2=1001, write_reg1=1001, write_reg2=1001, write_data1=1001, write_data2=0111, actual read_data1=0111, actual read_data2=0111, read_data1=0111, read_data2=0111 Test PASSED
+
+Time is now: 180 ns, write_enable1=1, write_enable2=1, write_priority=1, read_reg1=1101, read_reg2=1001, write_reg1=1100, write_reg2=0011, write_data1=1010, write_data2=1011, actual read_data1=0011, actual read_data2=0111, read_data1=0011, read_data2=0111 Test PASSED
+
+Time is now: 195 ns, write_enable1=0, write_enable2=0, write_priority=1, read_reg1=1100, read_reg2=0011, write_reg1=1100, write_reg2=0011, write_data1=1010, write_data2=1011, actual read_data1=1010, actual read_data2=1011, read_data1=1010, read_data2=1011 Test PASSED
+

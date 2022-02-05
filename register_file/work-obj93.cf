@@ -1,7 +1,7 @@
 v 4
-file . "register_file.vhd" "4447272af96b9cba5a09978c539b94bd0f89d64f" "20220203215543.723":
-  entity register_file at 6( 226) + 0 on 281;
-  architecture rf of register_file at 22( 727) + 0 on 282;
+file . "register_file.vhd" "6f954fcc37f1f991e3508971915cef78a66eae00" "20220204221516.139":
+  entity register_file at 6( 226) + 0 on 459;
+  architecture rf of register_file at 22( 721) + 0 on 460;
 file . "ram_single_port.vhd" "a8df50123d1dc8d027ff2f3782a309b11f34493b" "20220126232348.507":
   entity single_port_ram at 5( 174) + 0 on 215;
   architecture behav of single_port_ram at 17( 484) + 0 on 216;
@@ -14,3 +14,6 @@ file . "ram_dual_port.vhd" "a5515cd907d696a4fd5425866ad6bcef7de36f57" "202201301
 file . "ram_dual_port_test_bench.vhd" "9bfef973ad4ae7339aa702855d2348f570e38a9a" "20220130123509.963":
   entity ram_dual_port_test_bench at 1( 0) + 0 on 279;
   architecture test_bench of ram_dual_port_test_bench at 11( 140) + 0 on 280;
+file . "register_file_test_bench.vhd" "3d1bc3c059512b5b6c947af839528b09d916f1e4" "20220204221516.166":
+  entity register_file_test_bench at 1( 0) + 0 on 461;
+  architecture test_bench of register_file_test_bench at 11( 140) + 0 on 462;
